@@ -91,4 +91,9 @@ public class TrieTest {
         Assertions.assertFalse(trie.isEmpty());
     }
 
+    @Test
+    public void deleteNullWord() {
+        Trie trie = new Trie();
+        Assertions.assertThrows(IllegalWordException.class, () -> trie.removeWord(null));
+    }
 }

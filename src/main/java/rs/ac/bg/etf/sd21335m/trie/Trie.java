@@ -25,10 +25,17 @@ public class Trie {
     }
 
     public void removeWord(String word) {
+        checkInput(word);
+        words.remove(word);
+    }
+
+    private void checkInput(String word) {
+        if (word == null) {
+            throw new IllegalWordException();
+        }
         if (!wordExist(word)) {
             throw new WordDoesntExist();
         }
-        words.remove(word);
     }
 
     public boolean isEmpty() {
