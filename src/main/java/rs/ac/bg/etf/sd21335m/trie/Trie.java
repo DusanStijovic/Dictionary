@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.sd21335m.trie;
 
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
+import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
 
 import java.util.ArrayList;
@@ -13,10 +14,17 @@ public class Trie {
         words = new ArrayList<>();
     }
 
-    public void addNewWord(String word) {
+    private void checkInputAddWord(String word) {
         if (word == null) {
             throw new IllegalWordException();
         }
+        if (wordExist(word)) {
+            throw new WordAlreadyExist();
+        }
+    }
+
+    public void addNewWord(String word) {
+        checkInputAddWord(word);
         words.add(word);
     }
 
@@ -25,11 +33,11 @@ public class Trie {
     }
 
     public void removeWord(String word) {
-        checkInput(word);
+        checkInputDeleteWord(word);
         words.remove(word);
     }
 
-    private void checkInput(String word) {
+    private void checkInputDeleteWord(String word) {
         if (word == null) {
             throw new IllegalWordException();
         }
@@ -40,5 +48,9 @@ public class Trie {
 
     public boolean isEmpty() {
         return words.isEmpty();
+    }
+
+    public void removeAllWords() {
+        words.clear();
     }
 }
