@@ -1,10 +1,12 @@
 package rs.ac.bg.etf.sd21335m.trie;
 
+import org.junit.platform.commons.util.CollectionUtils;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
 
-import java.util.ArrayList;
+import java.awt.*;
+import java.util.*;
 import java.util.List;
 
 public class Trie {
@@ -52,5 +54,19 @@ public class Trie {
 
     public void removeAllWords() {
         words.clear();
+    }
+
+    public List<String> getWordsWithPrefix(String prefix) {
+        List<String> prefixWords = new ArrayList<>();
+        for (String word : words) {
+            if (word.startsWith(prefix)) {
+                prefixWords.add(word);
+            }
+        }
+        return prefixWords;
+    }
+
+    public int getHits(String prefix) {
+        return getWordsWithPrefix(prefix).size();
     }
 }

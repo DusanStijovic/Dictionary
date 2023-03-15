@@ -7,6 +7,8 @@ import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
 
+import java.util.List;
+
 public class TrieTest {
 
     private Trie trie;
@@ -101,5 +103,58 @@ public class TrieTest {
     public void addTwoSameWord() {
         trie.addNewWord("dusan");
         Assertions.assertThrows(WordAlreadyExist.class, () -> trie.addNewWord("dusan"));
+    }
+
+    @Test
+    public void searchPrefixNoResult() {
+        trie.addNewWord("dusan rec1");
+        trie.addNewWord("dusan rec2");
+        List<String> wordsPrefix = trie.getWordsWithPrefix("non");
+        Assertions.assertTrue(wordsPrefix.isEmpty());
+    }
+
+    @Test
+    public void searchPrefixOneWordWhole() {
+        trie.addNewWord("dusan");
+        trie.addNewWord("rec2");
+        List<String> wordsPrefix = trie.getWordsWithPrefix("dusan");
+        Assertions.assertFalse(wordsPrefix.isEmpty());
+    }
+
+
+    @Test
+    public void searchPrefixOneWord() {
+        trie.addNewWord("dusan");
+        trie.addNewWord("rec2");
+        List<String> wordsPrefix = trie.getWordsWithPrefix("dus");
+        Assertions.assertFalse(wordsPrefix.isEmpty());
+    }
+
+    @Test
+    public void searchPrefixTwoWordNonMatch() {
+        trie.addNewWord("dusan");
+        trie.addNewWord("rec2");
+        List<String> wordsPrefix = trie.getWordsWithPrefix("non");
+        Assertions.assertTrue(wordsPrefix.isEmpty());
+    }
+
+    @Test
+    public void searchPrefixThreeWordsTwoMatch() {
+        trie.addNewWord("sok kok");
+        trie.addNewWord("sok fant");
+        trie.addNewWord("voda");
+        List<String> wordsPrefix = trie.getWordsWithPrefix("sok");
+        Assertions.assertFalse(wordsPrefix.isEmpty());
+        Assertions.assertArrayEquals(wordsPrefix.toArray(), new String[]{"sok kok", "sok fant"});
+    }
+
+    @Test
+    public void searchPrefixThreeWordsNumOfHits() {
+        trie.addNewWord("sok kok");
+        trie.addNewWord("sok fant");
+        trie.addNewWord("voda");
+        long hits = trie.getHits("sok");
+        Assertions.assertEquals(2, hits);
+
     }
 }
