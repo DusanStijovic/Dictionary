@@ -6,25 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-public class TrieNodeTest {
+public abstract class TrieNodeTest {
 
-    private TrieNode trieNode;
+    protected TrieNode trieNode;
 
     @BeforeEach
     public void setUp() {
-        trieNode = TrieNode.createNonWordTrieNode();
+        trieNode = createTrieNodeForTesting();
     }
 
-    @Test
-    public void nonTrieNodeCreation() {
-        Assertions.assertFalse(trieNode.isWordTrieNode());
-    }
-
-    @Test
-    public void wordTrieNodeCreation() {
-        TrieNode wordTrieNode = TrieNode.createWordTrieNode();
-        Assertions.assertTrue(wordTrieNode.isWordTrieNode());
-    }
+    protected abstract TrieNode createTrieNodeForTesting();
 
     @Test
     public void testAddOneChildAndFindIt() {
