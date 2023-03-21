@@ -84,4 +84,73 @@ public abstract class TrieNodeTest {
         Assertions.assertThrows(ChildWithCharacterDoesNotExist.class, () -> trieNode.removeChild('n'));
     }
 
+    @Test
+    public void checkIfChildWithCharExist() {
+        trieNode.addChild('d', createTrieNodeForTesting());
+        Assertions.assertTrue(trieNode.hasChild('d'));
+    }
+
+    @Test
+    public void checkIfChildWithCharDoesNotExist() {
+        trieNode.addChild('d', createTrieNodeForTesting());
+        Assertions.assertFalse(trieNode.hasChild('a'));
+    }
+
+    @Test
+    public void checkIfSetToWordNode() {
+        trieNode.setWordTrieNode(true);
+        Assertions.assertTrue(trieNode.isWordTrieNode());
+    }
+
+    @Test
+    public void checkIfSetToNonWordNode() {
+        trieNode.setWordTrieNode(false);
+        Assertions.assertFalse(trieNode.isWordTrieNode());
+    }
+
+    @Test
+    public void testAddChildrenThanCheckIfHasChildren() {
+        trieNode.addChild('d', createTrieNodeForTesting());
+        Assertions.assertTrue(trieNode.hasSomeChild());
+    }
+
+    @Test
+    public void testIfDoesNotHaveChildrenWhenEmpty() {
+        Assertions.assertFalse(trieNode.hasSomeChild());
+    }
+
+    @Test
+    public void testGetParent() {
+        TrieNode newTrieNode = createTrieNodeForTesting();
+        trieNode.addChild('d', newTrieNode);
+        Optional<TrieNode> newTrieNodeParent = newTrieNode.getParent();
+        Assertions.assertTrue(newTrieNodeParent.isPresent());
+        Assertions.assertEquals(trieNode, newTrieNodeParent.get());
+    }
+
+    @Test
+    public void testGetParentAfterRemove() {
+        TrieNode newTrieNode = createTrieNodeForTesting();
+        trieNode.addChild('d', newTrieNode);
+        trieNode.removeChild('d');
+        Optional<TrieNode> newTrieNodeParent = newTrieNode.getParent();
+        Assertions.assertFalse(newTrieNodeParent.isPresent());
+    }
+
+
+    @Test
+    public void checkValueOfNode() {
+        TrieNode newTrieNode = createTrieNodeForTesting();
+        trieNode.addChild('d', newTrieNode);
+        Optional<Character> trieNodeChar =  newTrieNode.getCharacter();
+        Assertions.assertTrue(trieNodeChar.isPresent());
+        Assertions.assertEquals('d', newTrieNode.getCharacter().get());
+    }
+
+    @Test
+    public void checkValueOfNonAddedWord() {
+        TrieNode newTrieNode = createTrieNodeForTesting();
+        Assertions.assertTrue(newTrieNode.getCharacter().isEmpty());
+    }
+
 }

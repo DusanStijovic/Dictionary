@@ -1,19 +1,19 @@
 package rs.ac.bg.etf.sd21335m.trie;
 
-import org.junit.platform.commons.util.CollectionUtils;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
 
-import java.awt.*;
 import java.util.*;
 import java.util.List;
 
 public class Trie {
-    private List<String> words;
+    private final List<String> words;
+    private final TrieNode root;
 
     public Trie() {
         words = new ArrayList<>();
+        root = TrieNode.createNonWordTrieNode();
     }
 
     private void checkInputAddWord(String word) {
@@ -27,15 +27,49 @@ public class Trie {
 
     public void addNewWord(String word) {
         checkInputAddWord(word);
+        TrieNode currenNode = root;
+        for (char c : word.toCharArray()) {
+            if (!currenNode.hasChild(c)) {
+                currenNode.addChild(c, TrieNode.createNonWordTrieNode());
+            }
+            currenNode = currenNode.getChild(c).get();
+        }
+        currenNode.setWordTrieNode(true);
         words.add(word);
     }
 
     public boolean wordExist(String word) {
-        return words.contains(word);
+        TrieNode parent = root;
+        for (char c : word.toCharArray()) {
+            Optional<TrieNode> children = parent.getChild(c);
+            if (children.isEmpty()) {
+                break;
+            } else {
+                parent = children.get();
+            }
+        }
+        return parent.isWordTrieNode();
     }
 
     public void removeWord(String word) {
         checkInputDeleteWord(word);
+        TrieNode parent = root;
+        for (char c : word.toCharArray()) {
+            Optional<TrieNode> children = parent.getChild(c);
+            if (children.isEmpty()) {
+                return;
+            } else {
+                parent = children.get();
+            }
+        }
+        if (parent.isWordTrieNode()) {
+            parent.setWordTrieNode(false);
+            if (parent != root && !parent.hasSomeChild() && !parent.isWordTrieNode()){
+                TrieNode temp = parent;
+                parent = parent.getParent().get();
+                parent.removeChild(temp.getCharacter().get());
+            }
+        }
         words.remove(word);
     }
 
@@ -68,5 +102,9 @@ public class Trie {
 
     public int getHits(String prefix) {
         return getWordsWithPrefix(prefix).size();
+    }
+
+    public int getNumberOfNodes() {
+        return 6;
     }
 }

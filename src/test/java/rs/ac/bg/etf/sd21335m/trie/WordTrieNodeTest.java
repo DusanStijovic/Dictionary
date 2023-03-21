@@ -15,4 +15,9 @@ public class WordTrieNodeTest extends TrieNodeTest {
         Assertions.assertTrue(trieNode.isWordTrieNode());
     }
 
+    @Test
+    public void testChangedToNonWordTrie(){
+        trieNode.setWordTrieNode(false);
+    }
+
 }

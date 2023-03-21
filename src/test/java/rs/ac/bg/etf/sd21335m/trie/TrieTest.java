@@ -155,6 +155,19 @@ public class TrieTest {
         trie.addNewWord("voda");
         long hits = trie.getHits("sok");
         Assertions.assertEquals(2, hits);
+    }
 
+    @Test
+    public void getNumberOfNodesInTreeForOneWord(){
+        trie.addNewWord("dusan");
+        int numberOfNodes = trie.getNumberOfNodes();
+        Assertions.assertEquals(6, numberOfNodes);
+    }
+    @Test
+    public void getNumberOfNodesTwoWord(){
+//        trie.addNewWord("dusan");
+//        trie.addNewWord("duca");
+//        int numberOfNodes = trie.getNumberOfNodes();
+//        Assertions.assertEquals(8, numberOfNodes);
     }
 }
