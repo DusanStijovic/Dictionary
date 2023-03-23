@@ -53,15 +53,7 @@ public class BasicTrie {
 
     public void removeWord(String word) {
         checkInputDeleteWord(word);
-        TrieNode parent = root;
-        for (char c : word.toCharArray()) {
-            Optional<TrieNode> children = parent.getChild(c);
-            if (children.isEmpty()) {
-                return;
-            } else {
-                parent = children.get();
-            }
-        }
+        TrieNode parent = getLastWordNode(word).get();
         if (parent.isWordTrieNode()) {
             parent.setWordTrieNode(false);
             if (parent != root && !parent.hasSomeChild() && !parent.isWordTrieNode()) {
@@ -71,6 +63,19 @@ public class BasicTrie {
             }
         }
         words.remove(word);
+    }
+
+    private Optional<TrieNode> getLastWordNode(String word) {
+        TrieNode parent = root;
+        for (char c : word.toCharArray()) {
+            Optional<TrieNode> children = parent.getChild(c);
+            if (children.isEmpty()) {
+                return Optional.empty();
+            } else {
+                parent = children.get();
+            }
+        }
+        return Optional.of(parent);
     }
 
     private void checkInputDeleteWord(String word) {
@@ -91,20 +96,24 @@ public class BasicTrie {
     }
 
     public Set<String> getWordsWithPrefix(String prefix) {
+        Optional<TrieNode> lastCommonNode = getLastCommonNode(prefix);
+        if (lastCommonNode.isEmpty()) {
+            return Collections.emptySet();
+        }
         Set<String> results = new HashSet<>();
-        Optional<TrieNode> currentNode = Optional.of(root);
+        searchWordsWithPrefix(lastCommonNode.get(), new StringBuilder(prefix), results);
+        return results;
+    }
 
-        // Step 1: Traverse the trie to the last node of the prefix
+    private Optional<TrieNode> getLastCommonNode(String prefix) {
+        Optional<TrieNode> currentNode = Optional.of(root);
         for (char c : prefix.toCharArray()) {
             currentNode = currentNode.get().getChild(c);
             if (currentNode.isEmpty()) {
-                return results; // Prefix not found
+                break;
             }
         }
-
-        // Step 2: Find all words with the prefix
-        searchWordsWithPrefix(currentNode.get(), new StringBuilder(prefix), results);
-        return results;
+        return currentNode;
     }
 
     private void searchWordsWithPrefix(TrieNode node, StringBuilder currentWord, Set<String> results) {
