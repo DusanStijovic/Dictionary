@@ -5,14 +5,11 @@ import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
 
 import java.util.*;
-import java.util.List;
 
 public class BasicTrie {
-    private final List<String> words;
     private TrieNode root;
 
     public BasicTrie() {
-        words = new ArrayList<>();
         root = TrieNode.createNonWordTrieNode();
     }
 
@@ -27,15 +24,17 @@ public class BasicTrie {
 
     public void addNewWord(String word) {
         checkInputAddWord(word);
-        TrieNode currenNode = root;
+        TrieNode currentNode = root;
         for (char c : word.toCharArray()) {
-            if (!currenNode.hasChild(c)) {
-                currenNode.addChild(c, TrieNode.createNonWordTrieNode());
+            Optional<TrieNode> childOfCurrent = currentNode.getChild(c);
+            if (childOfCurrent.isEmpty()) {
+                TrieNode newChild = currentNode.createNonWordChildAndReturnIt(c);
+                currentNode = newChild;
+            } else {
+                currentNode = childOfCurrent.get();
             }
-            currenNode = currenNode.getChild(c).get();
         }
-        currenNode.setWordTrieNode(true);
-        words.add(word);
+        currentNode.setWordTrieNode(true);
     }
 
     public boolean wordExist(String word) {
@@ -53,16 +52,27 @@ public class BasicTrie {
 
     public void removeWord(String word) {
         checkInputDeleteWord(word);
-        TrieNode parent = getLastWordNode(word).get();
-        if (parent.isWordTrieNode()) {
-            parent.setWordTrieNode(false);
-            if (parent != root && !parent.hasSomeChild() && !parent.isWordTrieNode()) {
-                TrieNode temp = parent;
-                parent = parent.getParent().get();
-                parent.removeChild(temp.getCharacter().get());
-            }
+        Optional<TrieNode> trieNodeOptional = getLastWordNode(word);
+        trieNodeOptional.ifPresent(this::removeFromTrieIfWordNode);
+    }
+
+    private void removeFromTrieIfWordNode(TrieNode trieNode) {
+        if (trieNode.isWordTrieNode()) {
+            trieNode.setWordTrieNode(false);
+            removeCurrentAndAllParentsWithoutChildExpectRoot(trieNode);
         }
-        words.remove(word);
+    }
+
+    private void removeCurrentAndAllParentsWithoutChildExpectRoot(TrieNode current) {
+        while (current != root && !current.hasSomeChild() && !current.isWordTrieNode()) {
+            Optional<Character> optionalCharacter = current.getCharacter();
+            Optional<TrieNode> parentOfCurrent = current.getParent();
+            if (parentOfCurrent.isEmpty() || optionalCharacter.isEmpty()) {
+                break;
+            }
+            current = parentOfCurrent.get();
+            current.removeChild(optionalCharacter.get());
+        }
     }
 
     private Optional<TrieNode> getLastWordNode(String word) {
@@ -120,10 +130,13 @@ public class BasicTrie {
         if (node.isWordTrieNode()) {
             results.add(currentWord.toString());
         }
-        for (char c : node.getFirstChildrenCharacters()) {
-            currentWord.append(c);
-            searchWordsWithPrefix(node.getChild(c).get(), currentWord, results);
-            currentWord.deleteCharAt(currentWord.length() - 1);
+        for (TrieNode trieNode : node.getChildren()) {
+            Optional<Character> optionalCharacter = trieNode.getCharacter();
+            if (optionalCharacter.isPresent()) {
+                currentWord.append(optionalCharacter.get());
+                searchWordsWithPrefix(trieNode, currentWord, results);
+                currentWord.deleteCharAt(currentWord.length() - 1);
+            }
         }
     }
 

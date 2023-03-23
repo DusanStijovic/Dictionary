@@ -28,12 +28,6 @@ public class TrieNode {
         return new TrieNode();
     }
 
-    private static void checkIfNodeNull(TrieNode node) {
-        if (node == null) {
-            throw new AddingNullChildException();
-        }
-    }
-
     public boolean isWordTrieNode() {
         return wordTreeNode;
     }
@@ -42,12 +36,13 @@ public class TrieNode {
         this.wordTreeNode = wordTreeNode;
     }
 
-    public void addChild(char character, TrieNode child) {
-        checkIfNodeNull(child);
+    public TrieNode createNonWordChildAndReturnIt(char character) {
+        TrieNode child = TrieNode.createNonWordTrieNode();
         checkIfExistChildWithCharacter(character);
         children.put(character, child);
         child.parent = Optional.of(this);
         child.character = Optional.of(character);
+        return child;
     }
 
     private void checkIfExistChildWithCharacter(char character) {
@@ -100,8 +95,7 @@ public class TrieNode {
         return count;
     }
 
-
-    public Set<Character> getFirstChildrenCharacters() {
-        return children.keySet();
+    public Set<TrieNode> getChildren() {
+        return new HashSet<>(children.values());
     }
 }

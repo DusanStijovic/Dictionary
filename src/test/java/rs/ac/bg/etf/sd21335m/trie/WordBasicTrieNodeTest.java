@@ -3,7 +3,7 @@ package rs.ac.bg.etf.sd21335m.trie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class WordBasicTrieNodeTest extends BasicTrieNodeTest {
+class WordBasicTrieNodeTest extends BasicTrieNodeTest {
 
     @Override
     protected TrieNode createTrieNodeForTesting() {
@@ -11,13 +11,15 @@ public class WordBasicTrieNodeTest extends BasicTrieNodeTest {
     }
 
     @Test
-    public void wordTrieNodeCreation() {
+    void wordTrieNodeCreation() {
         Assertions.assertTrue(trieNode.isWordTrieNode());
     }
 
     @Test
-    public void testChangedToNonWordTrie(){
+    void testChangedToNonWordTrie(){
         trieNode.setWordTrieNode(false);
+        Assertions.assertFalse(trieNode.isWordTrieNode());
+
     }
 
 }

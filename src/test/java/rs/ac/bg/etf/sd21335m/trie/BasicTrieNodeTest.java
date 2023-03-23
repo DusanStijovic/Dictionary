@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 public abstract class BasicTrieNodeTest {
 
@@ -29,7 +32,7 @@ public abstract class BasicTrieNodeTest {
     }
 
     private void addOneChildAndSearchForIt(char character) {
-        TrieNode childAdded = addChildWithCharacterAndReturnIt(character);
+        TrieNode childAdded = trieNode.createNonWordChildAndReturnIt(character);
         checkIfChildInTreeWithCharacter(childAdded, character);
     }
 
@@ -41,16 +44,10 @@ public abstract class BasicTrieNodeTest {
 
     @Test
     public void testAddTwoChildsSearchForBoth() {
-        TrieNode firstChild = addChildWithCharacterAndReturnIt('f');
-        TrieNode secondChild = addChildWithCharacterAndReturnIt('s');
+        TrieNode firstChild = trieNode.createNonWordChildAndReturnIt('f');
+        TrieNode secondChild = trieNode.createNonWordChildAndReturnIt('s');
         checkIfChildInTreeWithCharacter(firstChild, 'f');
         checkIfChildInTreeWithCharacter(secondChild, 's');
-    }
-
-    private TrieNode addChildWithCharacterAndReturnIt(char character) {
-        TrieNode childAdded = TrieNode.createNonWordTrieNode();
-        trieNode.addChild(character, childAdded);
-        return childAdded;
     }
 
     @Test
@@ -61,18 +58,13 @@ public abstract class BasicTrieNodeTest {
 
     @Test
     public void addExistingChild() {
-        trieNode.addChild('c', TrieNode.createNonWordTrieNode());
-        Assertions.assertThrows(ChildWithCharacterExist.class, () -> trieNode.addChild('c', TrieNode.createNonWordTrieNode()));
-    }
-
-    @Test
-    public void addNullChild() {
-        Assertions.assertThrows(AddingNullChildException.class, () -> trieNode.addChild('n', null));
+        trieNode.createNonWordChildAndReturnIt('c');
+        Assertions.assertThrows(ChildWithCharacterExist.class, () -> trieNode.createNonWordChildAndReturnIt('c'));
     }
 
     @Test
     public void removeChildNotExistInTree() {
-        TrieNode addedTrieNode = addChildWithCharacterAndReturnIt('c');
+        TrieNode addedTrieNode = trieNode.createNonWordChildAndReturnIt('c');
         checkIfChildInTreeWithCharacter(addedTrieNode, 'c');
         trieNode.removeChild('c');
         Optional<TrieNode> retrievedChild = trieNode.getChild('c');
@@ -86,13 +78,13 @@ public abstract class BasicTrieNodeTest {
 
     @Test
     public void checkIfChildWithCharExist() {
-        trieNode.addChild('d', createTrieNodeForTesting());
+        trieNode.createNonWordChildAndReturnIt('d');
         Assertions.assertTrue(trieNode.hasChild('d'));
     }
 
     @Test
     public void checkIfChildWithCharDoesNotExist() {
-        trieNode.addChild('d', createTrieNodeForTesting());
+        trieNode.createNonWordChildAndReturnIt('d');
         Assertions.assertFalse(trieNode.hasChild('a'));
     }
 
@@ -110,7 +102,7 @@ public abstract class BasicTrieNodeTest {
 
     @Test
     public void testAddChildrenThanCheckIfHasChildren() {
-        trieNode.addChild('d', createTrieNodeForTesting());
+        trieNode.createNonWordChildAndReturnIt('d');
         Assertions.assertTrue(trieNode.hasSomeChild());
     }
 
@@ -121,8 +113,7 @@ public abstract class BasicTrieNodeTest {
 
     @Test
     public void testGetParent() {
-        TrieNode newTrieNode = createTrieNodeForTesting();
-        trieNode.addChild('d', newTrieNode);
+        TrieNode newTrieNode = trieNode.createNonWordChildAndReturnIt('d');
         Optional<TrieNode> newTrieNodeParent = newTrieNode.getParent();
         Assertions.assertTrue(newTrieNodeParent.isPresent());
         Assertions.assertEquals(trieNode, newTrieNodeParent.get());
@@ -130,8 +121,7 @@ public abstract class BasicTrieNodeTest {
 
     @Test
     public void testGetParentAfterRemove() {
-        TrieNode newTrieNode = createTrieNodeForTesting();
-        trieNode.addChild('d', newTrieNode);
+        TrieNode newTrieNode = trieNode.createNonWordChildAndReturnIt('d');
         trieNode.removeChild('d');
         Optional<TrieNode> newTrieNodeParent = newTrieNode.getParent();
         Assertions.assertFalse(newTrieNodeParent.isPresent());
@@ -140,9 +130,8 @@ public abstract class BasicTrieNodeTest {
 
     @Test
     public void checkValueOfNode() {
-        TrieNode newTrieNode = createTrieNodeForTesting();
-        trieNode.addChild('d', newTrieNode);
-        Optional<Character> trieNodeChar =  newTrieNode.getCharacter();
+        TrieNode newTrieNode = trieNode.createNonWordChildAndReturnIt('d');
+        Optional<Character> trieNodeChar = newTrieNode.getCharacter();
         Assertions.assertTrue(trieNodeChar.isPresent());
         Assertions.assertEquals('d', newTrieNode.getCharacter().get());
     }
@@ -154,37 +143,37 @@ public abstract class BasicTrieNodeTest {
     }
 
     @Test
-    public void getNumberOfNodesEmptyNode(){
+    public void getNumberOfNodesEmptyNode() {
         Assertions.assertEquals(1, trieNode.getNumberOfNodes());
     }
 
     @Test
-    public void getNumberOfNodesOneChild(){
-        trieNode.addChild('c', TrieNode.createNonWordTrieNode());
+    public void getNumberOfNodesOneChild() {
+        trieNode.createNonWordChildAndReturnIt('c');
         Assertions.assertEquals(2, trieNode.getNumberOfNodes());
     }
 
     @Test
-    public void getNumberOfNodesTwoChild(){
-        trieNode.addChild('c', TrieNode.createNonWordTrieNode());
-        trieNode.addChild('a', TrieNode.createNonWordTrieNode());
+    public void getNumberOfNodesTwoChild() {
+        trieNode.createNonWordChildAndReturnIt('c');
+        trieNode.createNonWordChildAndReturnIt('a');
         Assertions.assertEquals(3, trieNode.getNumberOfNodes());
     }
 
 
     @Test
-    public void getNumberOfNodesChildHasChild(){
-        TrieNode child = TrieNode.createNonWordTrieNode();
-        trieNode.addChild('c', child);
-        child.addChild('a', TrieNode.createNonWordTrieNode());
+    public void getNumberOfNodesChildHasChild() {
+        TrieNode child = trieNode.createNonWordChildAndReturnIt('c');
+        child.createNonWordChildAndReturnIt('a');
         Assertions.assertEquals(3, trieNode.getNumberOfNodes());
     }
 
     @Test
-    public void getNodeFirstChildCharacters(){
-        trieNode.addChild('a', TrieNode.createNonWordTrieNode());
-        trieNode.addChild('b', TrieNode.createNonWordTrieNode());
-        trieNode.addChild('c', TrieNode.createNonWordTrieNode());
-        Assertions.assertArrayEquals(new Character[]{'a', 'b', 'c'}, trieNode.getFirstChildrenCharacters().toArray());
+    public void getNodeFirstChildCharacters() {
+        TrieNode aNode = trieNode.createNonWordChildAndReturnIt('a');
+        TrieNode bNode = trieNode.createNonWordChildAndReturnIt('b');
+        TrieNode cNode = trieNode.createNonWordChildAndReturnIt('c');
+        Set<TrieNode> expected = new HashSet<>(Arrays.asList(aNode, bNode, cNode));
+        Assertions.assertEquals(expected, trieNode.getChildren());
     }
 }

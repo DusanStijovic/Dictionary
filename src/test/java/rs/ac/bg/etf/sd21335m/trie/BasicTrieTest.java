@@ -9,34 +9,29 @@ import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
 
 import java.util.*;
 
-public class BasicTrieTest {
+class BasicTrieTest {
 
     private BasicTrie basicTrie;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         basicTrie = new BasicTrie();
     }
 
     @Test
-    public void addNewWord() {
-        basicTrie.addNewWord("dusan");
-    }
-
-    @Test
-    public void addNewWordCheckIfPresent() {
+    void addNewWordCheckIfPresent() {
         basicTrie.addNewWord("dusan");
         Assertions.assertTrue(basicTrie.wordExist("dusan"));
     }
 
     @Test
-    public void addNewWordCheckIfSomeOtherExist() {
+    void addNewWordCheckIfSomeOtherExist() {
         basicTrie.addNewWord("dusan");
         Assertions.assertFalse(basicTrie.wordExist("non"));
     }
 
     @Test
-    public void addTwoWordsCheckIfBothExist() {
+    void addTwoWordsCheckIfBothExist() {
         basicTrie.addNewWord("dusan s");
         basicTrie.addNewWord("dusan m");
         Assertions.assertTrue(basicTrie.wordExist("dusan s"));
@@ -44,42 +39,42 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void addTwoWordsCheckIfThirdExist() {
+    void addTwoWordsCheckIfThirdExist() {
         basicTrie.addNewWord("dusan s");
         basicTrie.addNewWord("dusan m");
         Assertions.assertFalse(basicTrie.wordExist("dusan d"));
     }
 
     @Test
-    public void addNullToTrie() {
+    void addNullToTrie() {
         Assertions.assertThrows(IllegalWordException.class, () -> basicTrie.addNewWord(null));
     }
 
     @Test
-    public void deleteExistingWordCheckIfExist() {
+    void deleteExistingWordCheckIfExist() {
         basicTrie.addNewWord("dusan");
         basicTrie.removeWord("dusan");
         Assertions.assertFalse(basicTrie.wordExist("dusan"));
     }
 
     @Test
-    public void deleteNonExistingWord() {
+    void deleteNonExistingWord() {
         Assertions.assertThrows(WordDoesntExist.class, () -> basicTrie.removeWord("dusan"));
     }
 
     @Test
-    public void isEmptyWhenCreate() {
+    void isEmptyWhenCreate() {
         Assertions.assertTrue(basicTrie.isEmpty());
     }
 
     @Test
-    public void isNotEmptyWhenAddWord() {
+    void isNotEmptyWhenAddWord() {
         basicTrie.addNewWord("dusan");
         Assertions.assertFalse(basicTrie.isEmpty());
     }
 
     @Test
-    public void isEmptyAfterAddTwoDeleteOne() {
+    void isEmptyAfterAddTwoDeleteOne() {
         basicTrie.addNewWord("test1");
         basicTrie.addNewWord("test2");
         basicTrie.removeWord("test1");
@@ -87,12 +82,12 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void deleteNullWord() {
+    void deleteNullWord() {
         Assertions.assertThrows(IllegalWordException.class, () -> basicTrie.removeWord(null));
     }
 
     @Test
-    public void removeAllWordsCheckIfEmpty() {
+    void removeAllWordsCheckIfEmpty() {
         basicTrie.addNewWord("test1");
         basicTrie.addNewWord("test2");
         basicTrie.removeAllWords();
@@ -100,13 +95,13 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void addTwoSameWord() {
+    void addTwoSameWord() {
         basicTrie.addNewWord("dusan");
         Assertions.assertThrows(WordAlreadyExist.class, () -> basicTrie.addNewWord("dusan"));
     }
 
     @Test
-    public void searchPrefixNoResult() {
+    void searchPrefixNoResult() {
         basicTrie.addNewWord("dusan rec1");
         basicTrie.addNewWord("dusan rec2");
         Set<String> wordsPrefix = basicTrie.getWordsWithPrefix("non");
@@ -114,7 +109,7 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void searchPrefixOneWordWhole() {
+    void searchPrefixOneWordWhole() {
         basicTrie.addNewWord("dusan");
         basicTrie.addNewWord("rec2");
         Set<String> wordsPrefix = basicTrie.getWordsWithPrefix("dusan");
@@ -123,7 +118,7 @@ public class BasicTrieTest {
 
 
     @Test
-    public void searchPrefixOneWord() {
+    void searchPrefixOneWord() {
         basicTrie.addNewWord("dusan");
         basicTrie.addNewWord("rec2");
         Set<String> wordsPrefix = basicTrie.getWordsWithPrefix("dus");
@@ -131,7 +126,7 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void searchPrefixTwoWordNonMatch() {
+    void searchPrefixTwoWordNonMatch() {
         basicTrie.addNewWord("dusan");
         basicTrie.addNewWord("rec2");
         Set<String> wordsPrefix = basicTrie.getWordsWithPrefix("non");
@@ -139,7 +134,7 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void searchPrefixThreeWordsTwoMatch() {
+    void searchPrefixThreeWordsTwoMatch() {
         basicTrie.addNewWord("sok kok");
         basicTrie.addNewWord("sok fant");
         basicTrie.addNewWord("voda");
@@ -149,7 +144,7 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void searchPrefixThreeWordsNumOfHits() {
+    void searchPrefixThreeWordsNumOfHits() {
         basicTrie.addNewWord("sok kok");
         basicTrie.addNewWord("sok fant");
         basicTrie.addNewWord("voda");
@@ -158,14 +153,14 @@ public class BasicTrieTest {
     }
 
     @Test
-    public void getNumberOfNodesInTreeForOneWord() {
+    void getNumberOfNodesInTreeForOneWord() {
         basicTrie.addNewWord("dusan");
         int numberOfNodes = basicTrie.getNumberOfNodes();
         Assertions.assertEquals(6, numberOfNodes);
     }
 
     @Test
-    public void getNumberOfNodesTwoWord() {
+    void getNumberOfNodesTwoWord() {
         basicTrie.addNewWord("dusan");
         basicTrie.addNewWord("duca");
         int numberOfNodes = basicTrie.getNumberOfNodes();
