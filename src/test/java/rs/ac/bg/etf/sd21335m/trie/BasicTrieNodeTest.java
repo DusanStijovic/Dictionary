@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-public abstract class TrieNodeTest {
+public abstract class BasicTrieNodeTest {
 
     protected TrieNode trieNode;
 
@@ -153,4 +153,38 @@ public abstract class TrieNodeTest {
         Assertions.assertTrue(newTrieNode.getCharacter().isEmpty());
     }
 
+    @Test
+    public void getNumberOfNodesEmptyNode(){
+        Assertions.assertEquals(1, trieNode.getNumberOfNodes());
+    }
+
+    @Test
+    public void getNumberOfNodesOneChild(){
+        trieNode.addChild('c', TrieNode.createNonWordTrieNode());
+        Assertions.assertEquals(2, trieNode.getNumberOfNodes());
+    }
+
+    @Test
+    public void getNumberOfNodesTwoChild(){
+        trieNode.addChild('c', TrieNode.createNonWordTrieNode());
+        trieNode.addChild('a', TrieNode.createNonWordTrieNode());
+        Assertions.assertEquals(3, trieNode.getNumberOfNodes());
+    }
+
+
+    @Test
+    public void getNumberOfNodesChildHasChild(){
+        TrieNode child = TrieNode.createNonWordTrieNode();
+        trieNode.addChild('c', child);
+        child.addChild('a', TrieNode.createNonWordTrieNode());
+        Assertions.assertEquals(3, trieNode.getNumberOfNodes());
+    }
+
+    @Test
+    public void getNodeFirstChildCharacters(){
+        trieNode.addChild('a', TrieNode.createNonWordTrieNode());
+        trieNode.addChild('b', TrieNode.createNonWordTrieNode());
+        trieNode.addChild('c', TrieNode.createNonWordTrieNode());
+        Assertions.assertArrayEquals(new Character[]{'a', 'b', 'c'}, trieNode.getFirstChildrenCharacters().toArray());
+    }
 }

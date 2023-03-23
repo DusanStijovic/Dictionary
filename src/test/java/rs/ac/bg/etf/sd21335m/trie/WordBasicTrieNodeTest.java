@@ -3,7 +3,7 @@ package rs.ac.bg.etf.sd21335m.trie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class WordTrieNodeTest extends TrieNodeTest {
+public class WordBasicTrieNodeTest extends BasicTrieNodeTest {
 
     @Override
     protected TrieNode createTrieNodeForTesting() {

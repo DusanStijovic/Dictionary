@@ -1,8 +1,6 @@
 package rs.ac.bg.etf.sd21335m.trie;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class TrieNode {
 
@@ -88,5 +86,22 @@ public class TrieNode {
 
     public Optional<Character> getCharacter() {
         return character;
+    }
+
+    public int getNumberOfNodes() {
+        return countNodes(this);
+    }
+
+    private int countNodes(TrieNode node) {
+        int count = 1;
+        for (TrieNode child : node.children.values()) {
+            count += countNodes(child);
+        }
+        return count;
+    }
+
+
+    public Set<Character> getFirstChildrenCharacters() {
+        return children.keySet();
     }
 }
