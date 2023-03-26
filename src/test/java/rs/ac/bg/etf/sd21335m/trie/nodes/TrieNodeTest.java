@@ -1,15 +1,18 @@
-package rs.ac.bg.etf.sd21335m.trie;
+package rs.ac.bg.etf.sd21335m.trie.nodes;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import rs.ac.bg.etf.sd21335m.trie.TrieNode;
+import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterDoesNotExist;
+import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterExist;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class BasicTrieNodeTest {
+public abstract class TrieNodeTest {
 
     protected TrieNode trieNode;
 
@@ -43,7 +46,7 @@ public abstract class BasicTrieNodeTest {
     }
 
     @Test
-    public void testAddTwoChildsSearchForBoth() {
+    public void testAddTwoChildrenSearchForBoth() {
         TrieNode firstChild = trieNode.createNonWordChildAndReturnIt('f');
         TrieNode secondChild = trieNode.createNonWordChildAndReturnIt('s');
         checkIfChildInTreeWithCharacter(firstChild, 'f');
@@ -133,7 +136,7 @@ public abstract class BasicTrieNodeTest {
         TrieNode newTrieNode = trieNode.createNonWordChildAndReturnIt('d');
         Optional<Character> trieNodeChar = newTrieNode.getCharacter();
         Assertions.assertTrue(trieNodeChar.isPresent());
-        Assertions.assertEquals('d', newTrieNode.getCharacter().get());
+        Assertions.assertEquals('d', trieNodeChar.get());
     }
 
     @Test

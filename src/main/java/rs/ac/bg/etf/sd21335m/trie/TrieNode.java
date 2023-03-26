@@ -1,5 +1,8 @@
 package rs.ac.bg.etf.sd21335m.trie;
 
+import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterDoesNotExist;
+import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterExist;
+
 import java.util.*;
 
 public class TrieNode {
@@ -64,7 +67,6 @@ public class TrieNode {
         }
         child.get().parent = Optional.empty();
         children.remove(character);
-
     }
 
     public boolean hasChild(char character) {

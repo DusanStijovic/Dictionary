@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="rs.ac.bg.etf.sd21335m.trie.Gui">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="7" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="561" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="af653" class="javax.swing.JRadioButton" binding="deleteWordAction">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Delete word"/>
+        </properties>
+      </component>
+      <component id="8541" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Choose action"/>
+        </properties>
+      </component>
+      <component id="cb861" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Choose search strategy"/>
+        </properties>
+      </component>
+      <component id="e0dad" class="javax.swing.JRadioButton" binding="wildCardTrie">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Exact"/>
+        </properties>
+      </component>
+      <component id="9a4e6" class="javax.swing.JRadioButton" binding="prefixRadioButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Prefix"/>
+        </properties>
+      </component>
+      <component id="dcdd5" class="javax.swing.JRadioButton" binding="wildCardRadioButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Wild card(?)"/>
+        </properties>
+      </component>
+      <component id="72b52" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Choose trie implementation"/>
+        </properties>
+      </component>
+      <component id="3d739" class="javax.swing.JRadioButton" binding="basicTrie">
+        <constraints>
+          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Basic"/>
+        </properties>
+      </component>
+      <component id="39eb8" class="javax.swing.JRadioButton" binding="caseInsensitiveTrie">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Case insensitive"/>
+        </properties>
+      </component>
+      <component id="e4ca3" class="javax.swing.JRadioButton" binding="searchForWordAction">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Search for word"/>
+        </properties>
+      </component>
+      <component id="265ad" class="javax.swing.JRadioButton" binding="insertNewWordAction">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Insert new word"/>
+        </properties>
+      </component>
+      <component id="e7fb3" class="javax.swing.JFormattedTextField" binding="inputWord">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="e7224" class="javax.swing.JButton" binding="executeButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Execute"/>
+        </properties>
+      </component>
+      <component id="11837" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Rezultati pretrage"/>
+        </properties>
+      </component>
+      <scrollpane id="96316">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="5" height="5"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="b5e3b" class="javax.swing.JTextArea" binding="resultList">
+            <constraints/>
+            <properties>
+              <rows value="5"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="c3346" class="javax.swing.JLabel" binding="actionMessage">
+        <constraints>
+          <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="TrieImplemntation">
+      <member id="39eb8"/>
+      <member id="3d739"/>
+    </group>
+    <group name="Action">
+      <member id="af653"/>
+      <member id="e4ca3"/>
+      <member id="265ad"/>
+    </group>
+    <group name="SearchStrategy">
+      <member id="9a4e6"/>
+      <member id="e0dad"/>
+      <member id="dcdd5"/>
+    </group>
+  </buttonGroups>
+</form>

@@ -1,9 +1,10 @@
-package rs.ac.bg.etf.sd21335m.trie;
+package rs.ac.bg.etf.sd21335m.trie.nodes;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import rs.ac.bg.etf.sd21335m.trie.TrieNode;
 
-class WordBasicTrieNodeTest extends BasicTrieNodeTest {
+class WordTrieNodeTest extends TrieNodeTest {
 
     @Override
     protected TrieNode createTrieNodeForTesting() {
