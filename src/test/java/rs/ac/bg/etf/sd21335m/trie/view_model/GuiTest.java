@@ -199,6 +199,7 @@ class GuiTest {
         insertNewWord("du");
         gui.exactMatch.setSelected(true);
         deleteWord("du");
+        searchForWord("du");
         String result = trieModelView.makeResultString("du");
         Assertions.assertEquals(result, gui.resultList.getText());
     }
@@ -208,6 +209,18 @@ class GuiTest {
         gui.deleteWordAction.setSelected(true);
         gui.executeButton.doClick();
         Assertions.assertEquals(ActionMessage.DELETE_DONE_SUCCESSFULLY.toString(), gui.actionMessage.getText());
+    }
+
+    @Test
+    void changeTrieType() {
+        gui.caseInsensitiveTrie.setSelected(true);
+        insertNewWord("dusan");
+        insertNewWord("DU");
+        gui.prefixMatch.setSelected(true);
+        searchForWord("Du");
+        String result = trieModelView.makeResultString("du");
+        Assertions.assertEquals(result, gui.resultList.getText());
+        Assertions.assertEquals(ActionMessage.SEARCH_DONE_SUCCESSFULLY.toString(), gui.actionMessage.getText());
     }
 
 }
