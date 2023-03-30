@@ -34,7 +34,7 @@ class CaseInsensitiveTrieTest extends TrieTest {
     void searchWordWithPrefix(){
         trie.addNewWord("dusan");
         trie.addNewWord("dus");
-        Set<String> wordsPrefix = trie.search(prefixSearchStrategy, "DUS");
+        Set<String> wordsPrefix = trie.searchByStrategy(prefixMatchStrategy, "DUS");
         Assertions.assertEquals(wordsPrefix, new HashSet<>(Arrays.asList("dusan", "dus")));
     }
 

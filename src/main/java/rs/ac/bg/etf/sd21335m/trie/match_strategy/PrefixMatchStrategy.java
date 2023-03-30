@@ -1,10 +1,10 @@
-package rs.ac.bg.etf.sd21335m.trie.search_strategy;
+package rs.ac.bg.etf.sd21335m.trie.match_strategy;
 
 import rs.ac.bg.etf.sd21335m.trie.TrieNode;
 
 import java.util.*;
 
-public class PrefixSearchStrategy implements SearchStrategy {
+public class PrefixMatchStrategy implements MatchStrategy {
 
     private TrieNode root;
     private String prefix;
@@ -45,5 +45,46 @@ public class PrefixSearchStrategy implements SearchStrategy {
                 currentWord.deleteCharAt(currentWord.length() - 1);
             }
         }
+    }
+
+    @Override
+    public void delete(TrieNode trieNode, String prefix) {
+        TrieNode node = trieNode;
+        for (char c : prefix.toCharArray()) {
+            Optional<TrieNode> temp = node.getChild(c);
+            if (temp.isEmpty()) {
+                return;
+            }
+            node = temp.get();
+        }
+        removeSubTrie(node);
+        if (trieNode.hasSomeChild()) {
+            removeSubTrie(trieNode);
+        }
+    }
+
+    @Override
+    public MatchStrategyType getType() {
+        return MatchStrategyType.PREFIX;
+    }
+
+    private boolean removeSubTrie(TrieNode node) {
+        node.setWordTrieNode(false);
+        if (!node.hasSomeChild()) {
+            return true;
+        }
+        boolean canDelete = true;
+        for (TrieNode child : node.getChildren()) {
+            if (removeSubTrie(child)) {
+                Optional<Character> characterOptional = child.getCharacter();
+                characterOptional.ifPresent(node::removeChild);
+            } else {
+                canDelete = false;
+            }
+        }
+        if (canDelete) {
+            return !node.isWordTrieNode();
+        }
+        return false;
     }
 }

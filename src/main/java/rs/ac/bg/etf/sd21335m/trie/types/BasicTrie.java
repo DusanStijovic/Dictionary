@@ -1,13 +1,9 @@
 package rs.ac.bg.etf.sd21335m.trie.types;
 
 import rs.ac.bg.etf.sd21335m.trie.TrieNode;
-import rs.ac.bg.etf.sd21335m.trie.delete_strategy.DeleteStrategy;
-import rs.ac.bg.etf.sd21335m.trie.delete_strategy.ExplicitDeleteStrategy;
+import rs.ac.bg.etf.sd21335m.trie.match_strategy.*;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
-import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
-import rs.ac.bg.etf.sd21335m.trie.search_strategy.ExplicitSearchStrategy;
-import rs.ac.bg.etf.sd21335m.trie.search_strategy.SearchStrategy;
 
 import java.util.*;
 
@@ -43,34 +39,31 @@ public class BasicTrie implements Trie {
     }
 
     @Override
-    public Set<String> search(SearchStrategy searchStrategy, String lookFor) {
-        return searchStrategy.search(root, lookFor);
+    public Set<String> searchByStrategy(MatchStrategy matchStrategy, String lookFor) {
+        return matchStrategy.search(root, lookFor);
     }
 
     @Override
-    public void delete(DeleteStrategy deleteStrategy, String query) {
-        deleteStrategy.delete(root, query);
+    public void removeByStrategy(MatchStrategy matchStrategy, String query) {
+        matchStrategy.delete(root, query);
     }
 
     @Override
     public boolean wordExist(String word) {
-        ExplicitSearchStrategy explicitSearchStrategy = new ExplicitSearchStrategy();
+        ExplicitMatchStrategy explicitSearchStrategy = new ExplicitMatchStrategy();
         return !explicitSearchStrategy.search(root, word).isEmpty();
     }
 
     @Override
     public void removeWord(String word) {
         checkInputDeleteWord(word);
-        ExplicitDeleteStrategy explicitDeleteStrategy = new ExplicitDeleteStrategy();
-        explicitDeleteStrategy.delete(root, word);
+        ExplicitMatchStrategy explicitMatchStrategy = new ExplicitMatchStrategy();
+        explicitMatchStrategy.delete(root, word);
     }
 
     private void checkInputDeleteWord(String word) {
         if (word == null) {
             throw new IllegalWordException();
-        }
-        if (!wordExist(word)) {
-            throw new WordDoesntExist();
         }
     }
 
@@ -88,6 +81,11 @@ public class BasicTrie implements Trie {
     @Override
     public int getNumberOfNodes() {
         return root.getNumberOfNodes();
+    }
+
+    @Override
+    public TriType getType() {
+        return TriType.BASIC;
     }
 
 }

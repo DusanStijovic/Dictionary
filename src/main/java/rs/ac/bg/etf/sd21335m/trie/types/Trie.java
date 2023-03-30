@@ -1,15 +1,14 @@
 package rs.ac.bg.etf.sd21335m.trie.types;
 
-import rs.ac.bg.etf.sd21335m.trie.delete_strategy.DeleteStrategy;
-import rs.ac.bg.etf.sd21335m.trie.search_strategy.SearchStrategy;
+import rs.ac.bg.etf.sd21335m.trie.match_strategy.MatchStrategy;
 
 import java.util.Set;
 
 public interface Trie {
     void addNewWord(String word);
 
-    Set<String> search(SearchStrategy searchStrategy, String lookFor);
-    void delete(DeleteStrategy deleteStrategy, String query);
+    Set<String> searchByStrategy(MatchStrategy matchStrategy, String lookFor);
+    void removeByStrategy(MatchStrategy matchStrategy, String query);
     boolean wordExist(String word);
 
     void removeWord(String word);
@@ -19,4 +18,6 @@ public interface Trie {
     void removeAllWords();
 
     int getNumberOfNodes();
+
+    TriType getType();
 }

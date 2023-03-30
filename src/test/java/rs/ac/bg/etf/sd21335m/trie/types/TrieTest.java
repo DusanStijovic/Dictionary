@@ -3,32 +3,24 @@ package rs.ac.bg.etf.sd21335m.trie.types;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import rs.ac.bg.etf.sd21335m.trie.delete_strategy.DeleteStrategy;
-import rs.ac.bg.etf.sd21335m.trie.delete_strategy.PrefixDeleteStrategy;
-import rs.ac.bg.etf.sd21335m.trie.delete_strategy.WildCardDeleteStrategy;
-import rs.ac.bg.etf.sd21335m.trie.search_strategy.PrefixSearchStrategy;
+import rs.ac.bg.etf.sd21335m.trie.match_strategy.PrefixMatchStrategy;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
-import rs.ac.bg.etf.sd21335m.trie.exception.WordDoesntExist;
-import rs.ac.bg.etf.sd21335m.trie.search_strategy.WildCardSearchStrategy;
+import rs.ac.bg.etf.sd21335m.trie.match_strategy.WildCardMatchStrategy;
 
 import java.util.*;
 
 abstract class TrieTest {
 
     protected Trie trie;
-    protected PrefixSearchStrategy prefixSearchStrategy;
-    protected WildCardSearchStrategy wildCardSearchStrategy;
-    protected PrefixDeleteStrategy prefixDeleteStrategy;
-    private DeleteStrategy wildcardDeleteStrategy;
+    protected PrefixMatchStrategy prefixMatchStrategy;
+    protected WildCardMatchStrategy wildCardMatchStrategy;
 
     @BeforeEach
     void setUp() {
         trie = makeTrie();
-        prefixSearchStrategy = new PrefixSearchStrategy();
-        wildCardSearchStrategy = new WildCardSearchStrategy();
-        prefixDeleteStrategy = new PrefixDeleteStrategy();
-        wildcardDeleteStrategy = new WildCardDeleteStrategy();
+        prefixMatchStrategy = new PrefixMatchStrategy();
+        wildCardMatchStrategy = new WildCardMatchStrategy();
     }
 
     protected abstract Trie makeTrie();
@@ -73,11 +65,6 @@ abstract class TrieTest {
     }
 
     @Test
-    void deleteNonExistingWord() {
-        Assertions.assertThrows(WordDoesntExist.class, () -> trie.removeWord("dusan"));
-    }
-
-    @Test
     void isEmptyWhenCreate() {
         Assertions.assertTrue(trie.isEmpty());
     }
@@ -115,12 +102,19 @@ abstract class TrieTest {
         Assertions.assertThrows(WordAlreadyExist.class, () -> trie.addNewWord("dusan"));
     }
 
+    @Test
+    void addWordsSamePrefix() {
+        trie.addNewWord("aaaa");
+        trie.addNewWord("aaaabbb");
+        Assertions.assertTrue(trie.wordExist("aaaa"));
+        Assertions.assertTrue(trie.wordExist("aaaabbb"));
+    }
 
     @Test
     void searchPrefixNoResult() {
         trie.addNewWord("dusan rec1");
         trie.addNewWord("dusan rec2");
-        Set<String> wordsPrefix = trie.search(prefixSearchStrategy, "non");
+        Set<String> wordsPrefix = trie.searchByStrategy(prefixMatchStrategy, "non");
         Assertions.assertTrue(wordsPrefix.isEmpty());
     }
 
@@ -128,7 +122,7 @@ abstract class TrieTest {
     void searchPrefixOneWordWhole() {
         trie.addNewWord("dusan");
         trie.addNewWord("rec2");
-        Set<String> wordsPrefix = trie.search(prefixSearchStrategy, "dusan");
+        Set<String> wordsPrefix = trie.searchByStrategy(prefixMatchStrategy, "dusan");
         Assertions.assertFalse(wordsPrefix.isEmpty());
     }
 
@@ -137,7 +131,7 @@ abstract class TrieTest {
     void searchPrefixOneWord() {
         trie.addNewWord("dusan");
         trie.addNewWord("rec2");
-        Set<String> wordsPrefix = trie.search(prefixSearchStrategy, "dus");
+        Set<String> wordsPrefix = trie.searchByStrategy(prefixMatchStrategy, "dus");
         Assertions.assertFalse(wordsPrefix.isEmpty());
     }
 
@@ -145,7 +139,7 @@ abstract class TrieTest {
     void searchPrefixTwoWordNonMatch() {
         trie.addNewWord("dusan");
         trie.addNewWord("rec2");
-        Set<String> wordsPrefix = trie.search(prefixSearchStrategy, "non");
+        Set<String> wordsPrefix = trie.searchByStrategy(prefixMatchStrategy, "non");
         Assertions.assertTrue(wordsPrefix.isEmpty());
     }
 
@@ -154,7 +148,7 @@ abstract class TrieTest {
         trie.addNewWord("sok kok");
         trie.addNewWord("sok fant");
         trie.addNewWord("voda");
-        Set<String> wordsPrefix = trie.search(prefixSearchStrategy, "sok");
+        Set<String> wordsPrefix = trie.searchByStrategy(prefixMatchStrategy, "sok");
         Assertions.assertFalse(wordsPrefix.isEmpty());
         Assertions.assertEquals(wordsPrefix, new HashSet<>(Arrays.asList("sok kok", "sok fant")));
     }
@@ -186,7 +180,7 @@ abstract class TrieTest {
     void addWordSearchWithWildCard() {
         trie.addNewWord("dasan");
         trie.addNewWord("dusan");
-        Set<String> wildCardResult = trie.search(wildCardSearchStrategy, "d?san");
+        Set<String> wildCardResult = trie.searchByStrategy(wildCardMatchStrategy, "d?san");
         Assertions.assertEquals(new HashSet<>(Arrays.asList("dusan", "dasan")), wildCardResult);
     }
 
@@ -194,7 +188,7 @@ abstract class TrieTest {
     void addWordSearchWithTwoWildCard() {
         trie.addNewWord("dasan");
         trie.addNewWord("dusun");
-        Set<String> wildCardResult = trie.search(wildCardSearchStrategy, "d?s?n");
+        Set<String> wildCardResult = trie.searchByStrategy(wildCardMatchStrategy, "d?s?n");
         Assertions.assertEquals(new HashSet<>(Arrays.asList("dusun", "dasan")), wildCardResult);
     }
 
@@ -202,7 +196,7 @@ abstract class TrieTest {
     void removeWithPrefix() {
         trie.addNewWord("dusan");
         trie.addNewWord("dus");
-        trie.delete(prefixDeleteStrategy, "du");
+        trie.removeByStrategy(prefixMatchStrategy, "du");
         Assertions.assertFalse(trie.wordExist("dusan"));
         Assertions.assertFalse(trie.wordExist("dus"));
         Assertions.assertEquals(1, trie.getNumberOfNodes());
@@ -212,7 +206,7 @@ abstract class TrieTest {
     void removeWithNonExistingPrefix() {
         trie.addNewWord("dusan");
         trie.addNewWord("dus");
-        trie.delete(prefixDeleteStrategy, "ne");
+        trie.removeByStrategy(prefixMatchStrategy, "ne");
         Assertions.assertTrue(trie.wordExist("dusan"));
         Assertions.assertTrue(trie.wordExist("dus"));
     }
@@ -221,7 +215,7 @@ abstract class TrieTest {
     void removeWithWildCard(){
         trie.addNewWord("dusan");
         trie.addNewWord("dasan");
-        trie.delete(wildcardDeleteStrategy, "d?san");
+        trie.removeByStrategy(wildCardMatchStrategy, "d?san");
         Assertions.assertFalse(trie.wordExist("dusan"));
         Assertions.assertFalse(trie.wordExist("dasan"));
     }
@@ -230,7 +224,7 @@ abstract class TrieTest {
     void removeWithAllWildCards(){
         trie.addNewWord("dusan");
         trie.addNewWord("nasud");
-        trie.delete(wildcardDeleteStrategy, "?????");
+        trie.removeByStrategy(wildCardMatchStrategy, "?????");
         Assertions.assertFalse(trie.wordExist("dusan"));
         Assertions.assertFalse(trie.wordExist("nasud"));
     }
@@ -238,7 +232,7 @@ abstract class TrieTest {
     @Test
     void removePrefixAllWord(){
         trie.addNewWord("dusan");
-        trie.delete(prefixDeleteStrategy, "");
+        trie.removeByStrategy(prefixMatchStrategy, "");
         Assertions.assertFalse(trie.wordExist("dusan"));
     }
 }
