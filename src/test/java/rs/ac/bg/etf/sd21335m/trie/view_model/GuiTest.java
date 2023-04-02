@@ -4,16 +4,20 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.MatchStrategyType;
+import rs.ac.bg.etf.sd21335m.trie.types.ListFormatter;
 import rs.ac.bg.etf.sd21335m.trie.types.TriType;
+import rs.ac.bg.etf.sd21335m.trie.types.WordInNewLineFormatter;
 
 class GuiTest {
     protected TrieModelView trieModelView;
 
     protected Gui gui;
+    protected ListFormatter listFormatter;
 
     @BeforeEach
     void setUp() {
-        trieModelView = new TrieModelView();
+        listFormatter = new WordInNewLineFormatter();
+        trieModelView = new TrieModelView(listFormatter);
         gui = new Gui(trieModelView);
     }
 
@@ -134,7 +138,7 @@ class GuiTest {
         gui.searchForWordAction.setSelected(true);
         gui.executeButton.doClick();
         Assertions.assertEquals(ActionMessage.SEARCH_DONE_SUCCESSFULLY.toString(), gui.actionMessage.getText());
-        Assertions.assertEquals("dusan\n", gui.resultList.getText());
+        Assertions.assertEquals(trieModelView.makeResultString("dusan"), gui.resultList.getText());
     }
 
     @Test

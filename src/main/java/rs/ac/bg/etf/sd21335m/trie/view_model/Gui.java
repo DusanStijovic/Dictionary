@@ -3,6 +3,7 @@ package rs.ac.bg.etf.sd21335m.trie.view_model;
 import com.formdev.flatlaf.FlatDarkLaf;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.MatchStrategyType;
 import rs.ac.bg.etf.sd21335m.trie.types.TriType;
+import rs.ac.bg.etf.sd21335m.trie.types.WordInNewLineFormatter;
 
 import javax.swing.*;
 import java.awt.event.ItemEvent;
@@ -56,7 +57,7 @@ public class Gui {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         JFrame frame = new JFrame("Gui");
-        frame.setContentPane(new Gui(new TrieModelView()).panel1);
+        frame.setContentPane(new Gui(new TrieModelView(new WordInNewLineFormatter())).panel1);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

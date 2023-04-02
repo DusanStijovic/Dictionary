@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.MatchStrategyType;
+import rs.ac.bg.etf.sd21335m.trie.types.ListFormatter;
 import rs.ac.bg.etf.sd21335m.trie.types.TriType;
+import rs.ac.bg.etf.sd21335m.trie.types.WordInNewLineFormatter;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -14,10 +16,12 @@ import java.util.Set;
 public abstract class TrieModelViewTest {
 
     protected TrieModelView trieModelView;
+    protected ListFormatter listFormatter;
 
     @BeforeEach
     void setUp() {
-        trieModelView = new TrieModelView();
+        listFormatter = new WordInNewLineFormatter();
+        trieModelView = new TrieModelView(listFormatter);
     }
 
     @Test

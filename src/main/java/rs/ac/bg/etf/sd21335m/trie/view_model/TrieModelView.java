@@ -3,10 +3,7 @@ package rs.ac.bg.etf.sd21335m.trie.view_model;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.*;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
-import rs.ac.bg.etf.sd21335m.trie.types.BasicTrie;
-import rs.ac.bg.etf.sd21335m.trie.types.CaseInsensitiveTrie;
-import rs.ac.bg.etf.sd21335m.trie.types.TriType;
-import rs.ac.bg.etf.sd21335m.trie.types.Trie;
+import rs.ac.bg.etf.sd21335m.trie.types.*;
 
 import java.util.Objects;
 import java.util.Set;
@@ -16,11 +13,13 @@ public class TrieModelView {
     private Trie trie;
     private ActionMessage lastActionMessage;
     private MatchStrategy matchStrategy;
+    private final ListFormatter listFormatter;
 
-    public TrieModelView() {
+    public TrieModelView(ListFormatter listFormatter) {
         setTrieType(TriType.BASIC);
         chooseMatchStrategy(MatchStrategyType.EXACT);
         lastActionMessage = ActionMessage.NO_ACTION;
+        this.listFormatter = listFormatter;
     }
 
     public TriType getTrieType() {
@@ -78,12 +77,7 @@ public class TrieModelView {
 
     public String makeResultString(String word) {
         Set<String> results = searchByStrategy(word);
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String result : results) {
-            stringBuilder.append(result);
-            stringBuilder.append("\n");
-        }
-        return stringBuilder.toString();
+        return listFormatter.format(results.stream().toList());
     }
 
     public void deleteByStrategy(String word) {
