@@ -1,6 +1,6 @@
 package rs.ac.bg.etf.sd21335m.trie.match_strategy;
 
-import rs.ac.bg.etf.sd21335m.trie.TrieNode;
+import rs.ac.bg.etf.sd21335m.trie.types.TrieNode;
 
 import java.util.HashSet;
 import java.util.Optional;

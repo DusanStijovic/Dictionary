@@ -1,6 +1,5 @@
 package rs.ac.bg.etf.sd21335m.trie.types;
 
-import rs.ac.bg.etf.sd21335m.trie.TrieNode;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.*;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;

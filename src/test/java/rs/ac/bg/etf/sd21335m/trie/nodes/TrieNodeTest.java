@@ -3,7 +3,7 @@ package rs.ac.bg.etf.sd21335m.trie.nodes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import rs.ac.bg.etf.sd21335m.trie.TrieNode;
+import rs.ac.bg.etf.sd21335m.trie.types.TrieNode;
 import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterDoesNotExist;
 import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterExist;
 

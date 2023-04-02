@@ -1,4 +1,4 @@
-package rs.ac.bg.etf.sd21335m.trie;
+package rs.ac.bg.etf.sd21335m.trie.types;
 
 import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterDoesNotExist;
 import rs.ac.bg.etf.sd21335m.trie.exception.ChildWithCharacterExist;
