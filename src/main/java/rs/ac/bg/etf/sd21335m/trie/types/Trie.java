@@ -6,7 +6,6 @@ import java.util.Set;
 
 public interface Trie {
     void addNewWord(String word);
-
     Set<String> searchByStrategy(MatchStrategy matchStrategy, String lookFor);
     void removeByStrategy(MatchStrategy matchStrategy, String query);
     boolean wordExist(String word);

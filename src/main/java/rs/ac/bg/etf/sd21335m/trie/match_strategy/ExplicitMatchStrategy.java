@@ -75,5 +75,8 @@ public class ExplicitMatchStrategy implements MatchStrategy {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "ExplicitMatchStrategy";
+    }
 }

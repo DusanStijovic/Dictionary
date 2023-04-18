@@ -5,6 +5,7 @@ import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
 import rs.ac.bg.etf.sd21335m.trie.types.*;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Set;
 
@@ -77,7 +78,7 @@ public class TrieModelView {
 
     public String makeResultString(String word) {
         Set<String> results = searchByStrategy(word);
-        return listFormatter.format(results.stream().toList());
+        return listFormatter.format(new ArrayList<>(results));
     }
 
     public void deleteByStrategy(String word) {

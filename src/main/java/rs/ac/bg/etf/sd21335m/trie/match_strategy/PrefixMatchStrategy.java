@@ -87,4 +87,9 @@ public class PrefixMatchStrategy implements MatchStrategy {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "PrefixMatchStrategy";
+    }
 }

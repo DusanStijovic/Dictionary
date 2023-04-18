@@ -118,4 +118,9 @@ public class WildCardMatchStrategy implements MatchStrategy {
     private void markNodeAsNonWord(TrieNode node) {
         node.setWordTrieNode(false);
     }
+
+    @Override
+    public String toString() {
+        return "WildCardMatchStrategy";
+    }
 }
