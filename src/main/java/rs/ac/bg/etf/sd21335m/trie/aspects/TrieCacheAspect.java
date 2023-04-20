@@ -3,12 +3,14 @@ package rs.ac.bg.etf.sd21335m.trie.aspects;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.junit.jupiter.api.Order;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.MatchStrategy;
 
 import java.util.HashMap;
 import java.util.Set;
 
 @Aspect
+@Order(2)
 public class TrieCacheAspect {
 
     private final HashMap<String, Set<String>> savedSearchResult = new HashMap<>();

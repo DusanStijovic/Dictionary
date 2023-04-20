@@ -4,8 +4,10 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.junit.jupiter.api.Order;
 
 @Aspect
+@Order(3)
 public class NewWordInputValidationAspect {
 
     @Pointcut("execution(* rs.ac.bg.etf.sd21335m.trie.types.Trie.addNewWord(..))")

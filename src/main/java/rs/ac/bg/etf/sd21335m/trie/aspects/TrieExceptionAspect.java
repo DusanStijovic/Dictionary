@@ -7,7 +7,7 @@ import rs.ac.bg.etf.sd21335m.trie.aspects.util.EmailConfig;
 import rs.ac.bg.etf.sd21335m.trie.aspects.util.EmailSender;
 import rs.ac.bg.etf.sd21335m.trie.aspects.util.ExceptionFormatter;
 @Aspect
-@Order(1)
+@Order(4)
 public class TrieExceptionAspect {
     private final EmailSender emailSender = new EmailSender(EmailConfig.HOST, 587, EmailConfig.EMAIL_SENDER_EMAIL, EmailConfig.EMAIL_SENDER_PASSWORD);
 
