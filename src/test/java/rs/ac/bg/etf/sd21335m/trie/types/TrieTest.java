@@ -3,12 +3,14 @@ package rs.ac.bg.etf.sd21335m.trie.types;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import rs.ac.bg.etf.sd21335m.trie.match_strategy.PrefixMatchStrategy;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
+import rs.ac.bg.etf.sd21335m.trie.match_strategy.PrefixMatchStrategy;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.WildCardMatchStrategy;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 abstract class TrieTest {
 
@@ -212,7 +214,7 @@ abstract class TrieTest {
     }
 
     @Test
-    void removeWithWildCard(){
+    void removeWithWildCard() {
         trie.addNewWord("dusan");
         trie.addNewWord("dasan");
         trie.removeByStrategy(wildCardMatchStrategy, "d?san");
@@ -221,7 +223,7 @@ abstract class TrieTest {
     }
 
     @Test
-    void removeWithAllWildCards(){
+    void removeWithAllWildCards() {
         trie.addNewWord("dusan");
         trie.addNewWord("nasud");
         trie.removeByStrategy(wildCardMatchStrategy, "?????");
@@ -230,9 +232,16 @@ abstract class TrieTest {
     }
 
     @Test
-    void removePrefixAllWord(){
+    void removePrefixAllWord() {
         trie.addNewWord("dusan");
         trie.removeByStrategy(prefixMatchStrategy, "");
         Assertions.assertFalse(trie.wordExist("dusan"));
+    }
+
+    @Test
+    void addCharacterWithIligalCharacters() {
+        trie.addNewWord("dusan1.");
+        Assertions.assertFalse(trie.wordExist("dusan1."));
+        Assertions.assertTrue(trie.wordExist("dusan1"));
     }
 }

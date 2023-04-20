@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 @Aspect
-public class CacheAspect {
+public class TrieCacheAspect {
 
     private final HashMap<String, Set<String>> savedSearchResult = new HashMap<>();
 
@@ -40,12 +40,12 @@ public class CacheAspect {
     }
 
     @After("execution(* rs.ac.bg.etf.sd21335m.trie.types.Trie.removeByStrategy(..))")
-    public void logDeletedWords() {
+    public void wordDeleted() {
         savedSearchResult.clear();
     }
 
     @After("execution(* rs.ac.bg.etf.sd21335m.trie.types.Trie.addNewWord(..))")
-    public void logAddedWord() {
+    public void newWordAdded() {
         savedSearchResult.clear();
     }
 }
