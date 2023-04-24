@@ -3,6 +3,8 @@ package rs.ac.bg.etf.sd21335m.trie.types;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import rs.ac.bg.etf.sd21335m.trie.InitConfigManager;
 import rs.ac.bg.etf.sd21335m.trie.exception.IllegalWordException;
 import rs.ac.bg.etf.sd21335m.trie.exception.WordAlreadyExist;
 import rs.ac.bg.etf.sd21335m.trie.match_strategy.PrefixMatchStrategy;
@@ -12,6 +14,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+@ExtendWith({InitConfigManager.class})
 abstract class TrieTest {
 
     protected Trie trie;

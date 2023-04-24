@@ -2,8 +2,11 @@ package rs.ac.bg.etf.sd21335m.trie.view_model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import rs.ac.bg.etf.sd21335m.trie.InitConfigManager;
 import rs.ac.bg.etf.sd21335m.trie.types.TriType;
 
+@ExtendWith({InitConfigManager.class})
 class BasicTrieModelViewTest extends TrieModelViewTest {
 
     @Test
