@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="97885512-0039-4f71-9d0a-842523550853" name="Changes" comment="Moved TrieNode to types package" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\sd213335m\IdeaProjects\Dictionary\htmlReport" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d36bd94d-6b37-4669-ac8a-5da0118a141c" />
+        <option name="url" value="https://github.com/DusanStijovic/Dictionary.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2MulPMhOE0iHnPJD6rZWS04sElq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "299",
+    "WebServerToolWindowFactoryState": "false",
+    "aspect.path.notification.shown": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_directory_selection": "C:/Users/sd213335m/IdeaProjects/Dictionary/src/main/java/rs/ac/bg/etf/sd21335m/trie",
+    "last_opened_file_path": "C:/Users/sd213335m/IdeaProjects/Dictionary",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.mocha.mocha_node_package_dir": "",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="rs.ac.bg.etf.sd21335m.trie.types" />
+      <recent name="rs.ac.bg.etf.sd21335m.trie.view_model" />
+      <recent name="rs.ac.bg.etf.sd21335m.trie" />
+      <recent name="rs.ac.bg.etf.sd21335m.trie.exception" />
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sd213335m\IdeaProjects\Dictionary\src\main\java\rs\ac\bg\etf\sd21335m\trie\gui" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="rs.ac.bg.etf.sd21335m.trie" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="rs.ac.bg.etf.sd21335m.trie.types" />
+      <recent name="" />
+      <recent name="rs.ac.bg.etf.sd21335m.trie" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="rs.ac.bg.etf.sd21335m.trie" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="rs.ac.bg.etf.sd21335m.trie" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.Trie">
+    <configuration name="ListFormatterTest.twoWords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dictionary" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rs.ac.bg.etf.sd21335m.trie.types.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="rs.ac.bg.etf.sd21335m.trie.types" />
+      <option name="MAIN_CLASS_NAME" value="rs.ac.bg.etf.sd21335m.trie.types.ListFormatterTest" />
+      <option name="METHOD_NAME" value="twoWords" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Trie" type="JUnit" factoryName="JUnit">
+      <module name="Dictionary" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/rs/ac/bg/etf/sd21335m/trie" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ListFormatterTest.twoWords" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\sd213335m\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97885512-0039-4f71-9d0a-842523550853" name="Changes" comment="" />
+      <created>1678625326243</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678625326243</updated>
+      <workItem from="1678625327773" duration="200000" />
+      <workItem from="1678625800843" duration="397000" />
+      <workItem from="1678626386663" duration="285000" />
+      <workItem from="1678729820912" duration="5316000" />
+      <workItem from="1678828160465" duration="1567000" />
+      <workItem from="1678909051895" duration="7714000" />
+      <workItem from="1679424769829" duration="8698000" />
+      <workItem from="1679466351579" duration="54000" />
+      <workItem from="1679591997557" duration="9773000" />
+      <workItem from="1679731420609" duration="18625000" />
+      <workItem from="1679818872358" duration="18606000" />
+      <workItem from="1680003579443" duration="19976000" />
+      <workItem from="1680119829287" duration="1176000" />
+      <workItem from="1680157756347" duration="90000" />
+      <workItem from="1680194409471" duration="14000" />
+      <workItem from="1680189117287" duration="525000" />
+      <workItem from="1680189812943" duration="2698000" />
+      <workItem from="1680427585036" duration="871000" />
+      <workItem from="1682436570947" duration="13000" />
+    </task>
+    <task id="LOCAL-00001" summary="Refactored deletion and prefix search.">
+      <created>1679598624450</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679598624450</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Removed parts from old implementation. Applied SonarLint comments.">
+      <created>1679601800475</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679601800475</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Deleted some files">
+      <created>1679731538318</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679731538318</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Deleted some files">
+      <created>1679731622742</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679731622742</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactor way of searching and deleting from trie. Introduce strategies. Make view for GUI. Need refactoring for new methods.">
+      <created>1679837475496</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679837475496</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Little refactoring">
+      <created>1680157833655</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680157833655</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Refactoring. Make class for search output formatting.">
+      <created>1680427831067</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680427831067</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Moved TrieNode to types package">
+      <created>1680428384994</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680428384994</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Finished basinc trie implemntation. Need refactoring" />
+    <MESSAGE value="Refactored deletion and prefix search." />
+    <MESSAGE value="Removed parts from old implementation. Applied SonarLint comments." />
+    <MESSAGE value="Deleted some files" />
+    <MESSAGE value="Refactor way of searching and deleting from trie. Introduce strategies. Make view for GUI." />
+    <MESSAGE value="Refactor way of searching and deleting from trie. Introduce strategies. Make view for GUI. Need refactoring for new methods." />
+    <MESSAGE value="Little refactoring" />
+    <MESSAGE value="Refactoring. Make class for search output formatting." />
+    <MESSAGE value="Moved TrieNode to types package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved TrieNode to types package" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/rs/ac/bg/etf/sd21335m/trie/view_model/TrieModelView.java</url>
+          <line>12</line>
+          <properties field="trie" class="rs.ac.bg.etf.sd21335m.trie.view_model.TrieModelView" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Dictionary$CaseInsensitiveViewModelTest.ic" NAME="CaseInsensitiveViewModelTest Coverage Results" MODIFIED="1680119778512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>rs.ac.bg.etf.sd21335m.trie.exception.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Dictionary$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1680120031321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Dictionary$trie_in_Dictionary.ic" NAME="trie in Dictionary Coverage Results" MODIFIED="1680119710022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>rs.ac.bg.etf.sd21335m.trie.exception.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Dictionary$GuiTest.ic" NAME="GuiTest Coverage Results" MODIFIED="1680119748364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>rs.ac.bg.etf.sd21335m.trie.exception.*</FILTER>
+    </SUITE>
+  </component>
+</project>
