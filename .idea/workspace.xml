@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97885512-0039-4f71-9d0a-842523550853" name="Changes" comment="Moved TrieNode to types package" />
+    <list default="true" id="97885512-0039-4f71-9d0a-842523550853" name="Changes" comment="Moved TrieNode to types package">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rs/ac/bg/etf/sd21335m/trie/aspects/TrieExceptionAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rs/ac/bg/etf/sd21335m/trie/aspects/TrieExceptionAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,18 +82,18 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_directory_selection": "C:/Users/sd213335m/IdeaProjects/Dictionary/src/main/java/rs/ac/bg/etf/sd21335m/trie",
-    "last_opened_file_path": "C:/Users/sd213335m/IdeaProjects/Dictionary",
+    "last_opened_file_path": "C:/Users/sd213335m/IdeaProjects/DictionaryWithJAspcect/src/test/java/rs/ac/bg/etf/sd21335m/trie",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.mocha.mocha_node_package_dir": "",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -120,24 +126,17 @@
       <recent name="rs.ac.bg.etf.sd21335m.trie" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Trie">
-    <configuration name="ListFormatterTest.twoWords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Gui">
+    <configuration name="Gui" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="MAIN_CLASS_NAME" value="rs.ac.bg.etf.sd21335m.trie.view_model.Gui" />
       <module name="Dictionary" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="rs.ac.bg.etf.sd21335m.trie.types.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="rs.ac.bg.etf.sd21335m.trie.types" />
-      <option name="MAIN_CLASS_NAME" value="rs.ac.bg.etf.sd21335m.trie.types.ListFormatterTest" />
-      <option name="METHOD_NAME" value="twoWords" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PROGRAM_PARAMETERS" value="/config.properties" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Trie" type="JUnit" factoryName="JUnit">
+    <configuration name="AllTests" type="JUnit" factoryName="JUnit">
       <module name="Dictionary" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
@@ -147,11 +146,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.ListFormatterTest.twoWords" />
-      </list>
-    </recent_temporary>
+    <list>
+      <item itemvalue="Application.Gui" />
+      <item itemvalue="JUnit.AllTests" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">

@@ -12,14 +12,10 @@ import rs.ac.bg.etf.sd21335m.trie.config.ConfigurationManager;
 @Order(4)
 public class TrieExceptionAspect {
 
-    private final EmailSender emailSender;
+    private EmailSender emailSender;
 
     private final ExceptionFormatter exceptionFormatter = new ExceptionFormatter();
     private Throwable lastThrowable = null;
-
-    public TrieExceptionAspect() {
-        emailSender = createEmailSender();
-    }
 
     private static int getHostPort(ConfigurationManager configurationManager) {
         try {
@@ -29,7 +25,7 @@ public class TrieExceptionAspect {
         }
     }
 
-    private static boolean shouldSendEmeailOnError() {
+    private static boolean shouldSendEmailOnError() {
         return "true".equals(ConfigurationManager.getInstance().getProperty(EmailConfigKey.SHOULD_SEND_EMAIL));
     }
 
@@ -44,11 +40,21 @@ public class TrieExceptionAspect {
 
     @AfterThrowing(pointcut = "execution (* rs.ac.bg.etf.sd21335m.trie..*(..))", throwing = "exception")
     public void logException(Throwable exception) {
+        emailSender = getEmailSender();
         if (lastThrowable != exception) {
             lastThrowable = exception;
-            if (shouldSendEmeailOnError()) {
-                emailSender.sendEmail(EmailConfigKey.EMAIL_RECEIVER_EMAIL, "[Exception] Exception happened in trie app", exceptionFormatter.getStackTraceAsString(exception));
+            if (shouldSendEmailOnError()) {
+                ConfigurationManager configurationManager = ConfigurationManager.getInstance();
+                String emailReceiverEmail = configurationManager.getProperty(EmailConfigKey.EMAIL_RECEIVER_EMAIL);
+                emailSender.sendEmail(emailReceiverEmail, "[Exception] Exception happened in trie app", exceptionFormatter.getStackTraceAsString(exception));
             }
         }
+    }
+
+    private EmailSender getEmailSender() {
+        if (emailSender == null){
+            emailSender = createEmailSender();
+        }
+        return emailSender;
     }
 }
