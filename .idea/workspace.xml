@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97885512-0039-4f71-9d0a-842523550853" name="Changes" comment="Moved TrieNode to types package">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="97885512-0039-4f71-9d0a-842523550853" name="Changes" comment="Added documentation">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rs/ac/bg/etf/sd21335m/trie/aspects/TrieExceptionAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rs/ac/bg/etf/sd21335m/trie/aspects/TrieExceptionAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,10 +78,10 @@
     "aspect.path.notification.shown": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "dusan/withAspectJ",
     "ignore.virus.scanning.warn.message": "true",
     "last_directory_selection": "C:/Users/sd213335m/IdeaProjects/Dictionary/src/main/java/rs/ac/bg/etf/sd21335m/trie",
-    "last_opened_file_path": "C:/Users/sd213335m/IdeaProjects/DictionaryWithJAspcect/src/test/java/rs/ac/bg/etf/sd21335m/trie",
+    "last_opened_file_path": "C:/Users/sd213335m/IdeaProjects/DictionaryWithAspcectJ",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,10 +104,14 @@
       <recent name="rs.ac.bg.etf.sd21335m.trie.exception" />
       <recent name="" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sd213335m\IdeaProjects\DictionaryWithJAspcect\documentation" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sd213335m\IdeaProjects\DictionaryWithJAspcect\documentation" />
       <recent name="C:\Users\sd213335m\IdeaProjects\Dictionary\src\main\java\rs\ac\bg\etf\sd21335m\trie\gui" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -181,6 +184,8 @@
       <workItem from="1680189812943" duration="2698000" />
       <workItem from="1680427585036" duration="871000" />
       <workItem from="1682436570947" duration="13000" />
+      <workItem from="1686489226240" duration="582000" />
+      <workItem from="1686491124190" duration="615000" />
     </task>
     <task id="LOCAL-00001" summary="Refactored deletion and prefix search.">
       <created>1679598624450</created>
@@ -238,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680428384994</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added documentation">
+      <created>1686489428102</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686489428102</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +277,8 @@
     <MESSAGE value="Little refactoring" />
     <MESSAGE value="Refactoring. Make class for search output formatting." />
     <MESSAGE value="Moved TrieNode to types package" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved TrieNode to types package" />
+    <MESSAGE value="Added documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added documentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
